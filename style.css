@@ -1,12 +1,49 @@
 :root {
-    --color-heading: #0B0D19;
-    --color-body: #677386;
-    --color-bg-button: #3D7BFA;
-    --color-text-button: #FFF;
+  --color-heading: #0b0d19;
+  --color-body: #677386;
+  --color-bg-button: #3d7bfa;
+  --color-text-button: #fff;
 
-    /* Når du synes, du er færdig, så ændr værdien herunder til '1' for at se dit resultat i browseren */
-    --hide-overlay: 0;
+  /* Når du synes, du er færdig, så ændr værdien herunder til '1' for at se dit resultat i browseren */
+  --hide-overlay: 1;
 }
 
-
 /* Begynd her... */
+
+h1 {
+  color: var(--color-heading);
+  font-size: 60px;
+  font-weight: 500;
+}
+p {
+  max-width: 65ch;
+  color: var(--color-body);
+}
+button {
+  background-color: var(--color-bg-button);
+  color: var(--color-text-button);
+  border-radius: 20px;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+}
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+div:has(img) {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+
+  :nth-child(1) {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+  :nth-child(3) {
+    grid-column: 2/3;
+    grid-row: 2/4;
+  }
+
+  img {
+    border-radius: 10px;
+  }
+}
