@@ -1,75 +1,134 @@
+/* Du skal arbejde med denne branch, som indeholder et HTML-dokumen
+ og en tilhørende stylesheet, der er delvist implementeret.
+ I denne opgave skal du færdiggøre implementeringen af et 
+ "bento"-grid (se reference).
+
+Identificer de elementer, der skal fungere som containere, og anvend
+ container-type: inline-size. Dette vil gøre det muligt at anvende 
+ container queries på disse elementer.
+
+Du skal primært bruge container queries til at ændre skriftstørrelsen
+ (og muligvis lidt på layoutet), så teksten passer i diverse 
+ .card-elementer.
+
+Brug grid-template-areas til at definere, hvordan elementerne skal 
+placeres i forhold til hinanden, og hvordan de skal tilpasse sig 
+forskellige skærmstørrelser ved at bruge @media().
+
+Når du har implementeret ovenstående ændringer, eksperimenter da med
+ at ændre størrelsen på containere for at observere, hvordan 
+ layoutet dynamisk tilpasser sig. */
+.card {
+  container-type: inline-size;
+}
 .bento {
+  display: grid;
+  grid-template-rows: 0.5fr 1fr 0.8fr;
+  grid-template-columns: 1.5fr 1fr;
+  width: 100%;
+  grid-template-areas:
+    "tag img1"
+    "title title"
+    "img2 list";
+
+  @media (min-width: 800px) {
     display: grid;
-    gap: var(--spacing-base);
+    grid-template-rows: 1fr 0.8fr;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    width: 100%;
+    grid-template-areas:
+      "title title img1"
+      "img2 tag list";
+  }
+}
 
-    .title {
-        --bg: var(--color-brand-yellow);
-    }
+.bento > .title {
+  grid-area: title;
+}
+.bento > .list {
+  grid-area: list;
+}
+.bento > .tag {
+  grid-area: tag;
+}
+.bento > .image-1 {
+  grid-area: img1;
+}
+.bento > .image-2 {
+  grid-area: img2;
+}
 
-    .list {
-        --bg: var(--color-brand-coffee);
-    }
+/**Tidl. kode**/
+.bento {
+  display: grid;
+  gap: var(--spacing-base);
 
-    .image-1 {
-        color: var(--color-text-accent);
-    }
+  .title {
+    --bg: var(--color-brand-yellow);
+  }
 
-    .tag {
-        --bg: var(--color-brand-olive);
-        font-size: 2rem;
-        line-height: 1.2;
-    }
+  .list {
+    --bg: var(--color-brand-coffee);
+  }
+
+  .image-1 {
+    color: var(--color-text-accent);
+  }
+
+  .tag {
+    --bg: var(--color-brand-olive);
+    font-size: 2rem;
+    line-height: 1.2;
+  }
 }
 
 .card {
-    border-radius: var(--border-radius);
-    background: var(--bg);
-    overflow: clip;
+  border-radius: var(--border-radius);
+  background: var(--bg);
+  overflow: clip;
 
-    &:not(:has(img)) {
-        padding: var(--spacing-base);
-    }
+  &:not(:has(img)) {
+    padding: var(--spacing-base);
+  }
 }
 
 h2 {
-    font-size: 4rem;
-    line-height: 1.1;
-    color: var(--color-text-dark);
-    margin-bottom: var(--spacing-base);
+  font-size: 4rem;
+  line-height: 1.1;
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-base);
 }
 
 .website {
-    font-size: 1.2rem;
-    margin-top: auto;
+  font-size: 1.2rem;
+  margin-top: auto;
 }
 
-
-
 @layer {
-    :root {
-        /* Brand Colors */
-        --color-brand-yellow: #FFB800;
-        --color-brand-olive: #4A5F32;
-        --color-brand-coffee: #5C3C2E;
+  :root {
+    /* Brand Colors */
+    --color-brand-yellow: #ffb800;
+    --color-brand-olive: #4a5f32;
+    --color-brand-coffee: #5c3c2e;
 
-        /* Background Colors */
-        --color-background-dark: #2C1810;
-        --color-background-primary: var(--color-brand-yellow);
-        --color-background-menu: var(--color-brand-coffee);
-        --color-background-accent: var(--color-brand-olive);
+    /* Background Colors */
+    --color-background-dark: #2c1810;
+    --color-background-primary: var(--color-brand-yellow);
+    --color-background-menu: var(--color-brand-coffee);
+    --color-background-accent: var(--color-brand-olive);
 
-        /* Text Colors */
-        --color-text-dark: var(--color-background-dark);
-        --color-text-light: #FFFFFF;
-        --color-text-accent: var(--color-brand-yellow);
+    /* Text Colors */
+    --color-text-dark: var(--color-background-dark);
+    --color-text-light: #ffffff;
+    --color-text-accent: var(--color-brand-yellow);
 
-        /* Component Colors */
-        --color-logo-icon: var(--color-text-dark);
-        --color-menu-highlight: var(--color-brand-yellow);
+    /* Component Colors */
+    --color-logo-icon: var(--color-text-dark);
+    --color-menu-highlight: var(--color-brand-yellow);
 
-        /* Layout */
-        --border-radius: 24px;
-        --spacing-base: 20px;
-        --spacing-large: 40px;
-    }
+    /* Layout */
+    --border-radius: 24px;
+    --spacing-base: 20px;
+    --spacing-large: 40px;
+  }
 }
