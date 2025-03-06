@@ -22,7 +22,6 @@ main,
 aside {
   /* Sæt container-type */
   container-type: inline-size;
-  /**ændre til .article-container??**/
 }
 
 ul {
@@ -69,11 +68,13 @@ article {
   /* - Indstil 2 kolonner */
   /* - Sæt `order: 1;` på img på hvert andet card */
   @container (width > 500px) {
-    grid-template-columns: 1fr 1fr;
-
-    :nth-child(even) img {
-      order: 1;
-    }
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+}
+@container (width > 500px) {
+  li:nth-child(even) img {
+    order: 1;
   }
 }
 
