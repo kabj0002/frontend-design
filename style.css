@@ -6,6 +6,7 @@ article {
   max-width: 65ch;
   display: grid;
   grid-template-columns:
+  /*Her oprettes egne grid-linier*/
     [full-start] var(--full) [feature-start] var(--feature) [content-start] var(
       --content
     )
