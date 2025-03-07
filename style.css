@@ -1,2 +1,27 @@
+/* Din opgave er at anvende flow space-teknikken, så der skabes et behageligt og
+ensartet vertikalt rum mellem de forskellige elementer. Du skal anvende følgende afstande:
+
+Angiv en standard vertikal margin på .5rlh mellem alle elementer inde i article, med 
+mulighed for overskrive denne via en custom property kaldet --flow-space.
+For h2, sæt —flow-space-værdien til 2rlh.
+For h3, sæt —flow-space-værdien til 1rlh.
+For alle elementer, der kommer lige efter h3, reducér —flow-space til .25rlh. */
+
 /* Dine styles her */
-article {}
+
+article {
+  margin-inline: auto;
+
+  > * + * {
+    margin-top: var(--flow-space, 0.5rlh);
+  }
+  h2 {
+    --flow-space: 2rlh;
+  }
+  h3 {
+    --flow-space: 1rlh;
+  }
+  h3 + * {
+    --flow-space: 0.25rlh;
+  }
+}
