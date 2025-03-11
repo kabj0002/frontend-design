@@ -26,47 +26,23 @@ import { cardContent } from "../data/card-content.js";
             aliquip ex ea commodo consequat.
           </p>
         </header>
-    <div>
         <ScrollingContainer cardContent={cardContent} />
-      </div>
       </section>
     </main>
   </body>
 </html>
 
 <style>
-html {
-scroll-snap-type: x mandatory;
-}
-body {
-  display: flex;
-  overflow-x: auto;
-  > * {
-    flex: 1 0 70%;
-  }
-}
   main {
     padding-block: 4rem; /* Kun af æstetiske årsager */
   }
 section {
   display: grid;
-   grid-template-columns: 1fr auto 1fr;
- grid-template-rows: 1fr 1fr;
- scroll-snap-align: center;
-scroll-snap-stop: always;
-block-size: 50svh;
-  
+  grid-template-columns: 1fr [content] minmax(0, var(--content-width)) 1fr;
+  gap: 20px;
+
   > * {
-    max-width: 50ch;
+  grid-column: content;
+ }
 }
-}
-  header {
-    grid-column: 2/3;
-    grid-row: 1/2;
-    place-content: center;
-  }
-  div {
-    grid-column: 1/4;
-    grid-row: 2/3;
-  }
-</style>
+  </style>
