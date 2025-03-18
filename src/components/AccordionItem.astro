@@ -4,7 +4,7 @@ const { exclusive, ...props } = Astro.props;
 const { id, question, answer, linkBlock } = props;
 ---
 
-<details {id}>
+<details name={id}>
   <summary>
     <span>
       {question}
@@ -59,6 +59,8 @@ const { id, question, answer, linkBlock } = props;
       }
     }
 
+
+
     .answer {
       color: #595566;
 
@@ -75,4 +77,5 @@ const { id, question, answer, linkBlock } = props;
       }
     }
   }
+  
 </style>
